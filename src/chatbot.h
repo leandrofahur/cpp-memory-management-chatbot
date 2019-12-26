@@ -29,7 +29,12 @@ public:
 
     //// STUDENT CODE
     ////
-
+    // geeksforgeeks.com/copy-constructor-in-cpp/
+    // learncpp.com/cpp-tutorial/15-3-move-constructors-and-move-assignment/
+    ChatBot(const ChatBot& chatbot);                    // copy constructor
+    Chatbot& operator=(const Chatbot& chatbot);         // copy assignment
+    ChatBot(Chatbot&& content);                         // move constructor
+    ChatBot& operator(ChatBot&& content);               // move assignment
     ////
     //// EOF STUDENT CODE
 
