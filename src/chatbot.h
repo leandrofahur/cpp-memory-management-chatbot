@@ -31,10 +31,10 @@ public:
     ////
     // geeksforgeeks.com/copy-constructor-in-cpp/
     // learncpp.com/cpp-tutorial/15-3-move-constructors-and-move-assignment/
-    ChatBot(const ChatBot& chatbot);                    // copy constructor
-    ChatBot& operator=(const ChatBot& chatbot);         // copy assignment
-    ChatBot(ChatBot&& content);                         // move constructor
-    ChatBot& operator=(ChatBot&& content);               // move assignment
+    ChatBot(const ChatBot &content);            // copy constructor
+    ChatBot &operator=(const ChatBot &content); // copy assignment
+    ChatBot(ChatBot &&content);                 // move constructor
+    ChatBot &operator=(ChatBot &&content);      // move assignment
     ////
     //// EOF STUDENT CODE
 

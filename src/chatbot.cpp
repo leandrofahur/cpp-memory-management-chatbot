@@ -44,30 +44,34 @@ ChatBot::~ChatBot()
 
 //// STUDENT CODE
 ////
-ChatBot::ChatBot(const ChatBot& chatbot) {
-    std::cout << "Chatbot copying constructor" << std::endl;
+ChatBot::ChatBot(const ChatBot &content)
+{
+    std::cout << "ChatBot copying constructor" << std::endl;
     // associate:
-    this->_chatLogic = chatbot._chatLogic;
-    this->_rootNode = chatbot._rootNode;
-    this->_image = new wxBitmap(*chatbot._image);
-}            
+    this->_chatLogic = content._chatLogic;
+    this->_rootNode = content._rootNode;
+    this->_image = new wxBitmap(*content._image);
+}
 
-ChatBot& ChatBot::operator=(const ChatBot& chatbot) {
-    std::cout << "Chatbot copy assignment operator" << std::endl;
+ChatBot &ChatBot::operator=(const ChatBot &content)
+{
+    std::cout << "ChatBot copy assignment operator" << std::endl;
 
-    if(this == &chatbot) {
+    if (this == &content)
+    {
         return *this;
     }
 
-    this->_chatLogic = chatbot._chatLogic;
-    this->_rootNode = chatbot._rootNode;
+    this->_chatLogic = content._chatLogic;
+    this->_rootNode = content._rootNode;
     delete this->_image;
-    this->_image = new wxBitmap(*chatbot._image);
+    this->_image = new wxBitmap(*content._image);
 
     return *this;
 }
 
-ChatBot::ChatBot(ChatBot&& content) {
+ChatBot::ChatBot(ChatBot &&content)
+{
     std::cout << "Chatbot moving constructor" << std::endl;
     // associate:
     this->_chatLogic = content._chatLogic;
@@ -76,29 +80,29 @@ ChatBot::ChatBot(ChatBot&& content) {
     // release data:
     content._chatLogic = nullptr;
     content._rootNode = nullptr;
-    delete content._image;
-    content._image = nullptr;
-}   
+    // delete content._image;
+    content._image = NULL;
+}
 
-ChatBot& ChatBot::operator=(ChatBot&& content) {
+ChatBot &ChatBot::operator=(ChatBot &&content)
+{
     std::cout << "Chatbot move assignment operator" << std::endl;
-    
-    if(this == &content) {
+
+    if (this == &content)
+    {
         return *this;
     }
-
     this->_chatLogic = content._chatLogic;
     this->_rootNode = content._rootNode;
     delete this->_image;
-    this->_image = new wxBitmap(*content._image);
+    this->_image = content._image;
     // release data:
     content._chatLogic = nullptr;
     content._rootNode = nullptr;
-    delete content._image;
     content._image = nullptr;
 
     return *this;
-}       
+}
 ////
 //// EOF STUDENT CODE
 

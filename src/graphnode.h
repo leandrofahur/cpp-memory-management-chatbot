@@ -1,6 +1,8 @@
 #ifndef GRAPHNODE_H_
 #define GRAPHNODE_H_
 
+#include <iostream>
+#include <memory>
 #include <vector>
 #include <string>
 #include "chatbot.h"
