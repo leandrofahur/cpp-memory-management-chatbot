@@ -21,7 +21,7 @@ ChatBot::ChatBot()
 ChatBot::ChatBot(std::string filename)
 {
     std::cout << "ChatBot Constructor" << std::endl;
-
+    
     // invalidate data handles
     _chatLogic = nullptr;
     _rootNode = nullptr;
@@ -35,7 +35,7 @@ ChatBot::~ChatBot()
     std::cout << "ChatBot Destructor" << std::endl;
 
     // deallocate heap memory
-    if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
+    if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
     {
         delete _image;
         _image = NULL;
@@ -44,65 +44,7 @@ ChatBot::~ChatBot()
 
 //// STUDENT CODE
 ////
-ChatBot::ChatBot(const ChatBot &content)
-{
-    std::cout << "ChatBot copying constructor" << std::endl;
-    // associate:
-    this->_chatLogic = content._chatLogic;
-    this->_rootNode = content._rootNode;
-    this->_image = new wxBitmap(*content._image);
-}
 
-ChatBot &ChatBot::operator=(const ChatBot &content)
-{
-    std::cout << "ChatBot copy assignment operator" << std::endl;
-
-    if (this == &content)
-    {
-        return *this;
-    }
-
-    this->_chatLogic = content._chatLogic;
-    this->_rootNode = content._rootNode;
-    delete this->_image;
-    this->_image = new wxBitmap(*content._image);
-
-    return *this;
-}
-
-ChatBot::ChatBot(ChatBot &&content)
-{
-    std::cout << "Chatbot moving constructor" << std::endl;
-    // associate:
-    this->_chatLogic = content._chatLogic;
-    this->_rootNode = content._rootNode;
-    this->_image = content._image;
-    // release data:
-    content._chatLogic = nullptr;
-    content._rootNode = nullptr;
-    // delete content._image;
-    content._image = NULL;
-}
-
-ChatBot &ChatBot::operator=(ChatBot &&content)
-{
-    std::cout << "Chatbot move assignment operator" << std::endl;
-
-    if (this == &content)
-    {
-        return *this;
-    }
-    this->_chatLogic = content._chatLogic;
-    this->_rootNode = content._rootNode;
-    delete this->_image;
-    this->_image = content._image;
-    // release data:
-    content._chatLogic = nullptr;
-    content._rootNode = nullptr;
-    content._image = nullptr;
-
-    return *this;
-}
 ////
 //// EOF STUDENT CODE
 
