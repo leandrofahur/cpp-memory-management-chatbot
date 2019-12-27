@@ -54,7 +54,9 @@ ChatBot::ChatBot(const ChatBot& content) {
     _currentNode = content._currentNode;
 
     // load image into heap memory
-    _image = new wxBitmap(*content->_image);
+    _image = new wxBitmap(*content._image);
+
+    _chatLogic->SetChatbotHandle(this);
 }
 ChatBot::ChatBot(ChatBot&& content) {
     std::cout << "ChatBot MOVE constructor" << std::endl;
@@ -62,13 +64,15 @@ ChatBot::ChatBot(ChatBot&& content) {
     _chatLogic = content._chatLogic;
     _rootNode = content._rootNode;
     _currentNode = content._currentNode;
-    _image = current._image;
+    _image = content._image;
 
     // dealocate everything else: (remember wxWidgets is NULL)
     content._chatLogic = nullptr;
     content._rootNode = nullptr;
     content._currentNode = nullptr;
-    current._image = NULL;
+    content._image = NULL;
+
+    _chatLogic->SetChatbotHandle(this);
 }
 
 // assignment overload for copy and move, respectively:
@@ -76,7 +80,7 @@ ChatBot& ChatBot::operator=(const ChatBot& content) {
     std::cout << "ChatBot COPY ASSIGNMENT operator" << std::endl;
 
     // check if the content is the same:
-    if( this == content) {
+    if( this == &content) {
         return *this;
     }
 
@@ -93,7 +97,9 @@ ChatBot& ChatBot::operator=(const ChatBot& content) {
     _currentNode = content._currentNode;
 
     // load image into heap memory
-    _image = new wxBitmap(*content->_image);
+    _image = new wxBitmap(*content._image);
+
+    _chatLogic->SetChatbotHandle(this);
 
     return *this;
 }
@@ -102,7 +108,7 @@ ChatBot& ChatBot::operator=(ChatBot&& content) {
     std::cout << "ChatBot MOVE ASSIGNMENT operator" << std::endl;
 
     // check if the content is the same:
-    if( this == content) {
+    if( this == &content) {
         return *this;
     }
 
@@ -117,15 +123,15 @@ ChatBot& ChatBot::operator=(ChatBot&& content) {
     _chatLogic = content._chatLogic;
     _rootNode = content._rootNode;
     _currentNode = content._currentNode;
-    _image = content->_image;
+    _image = content._image;
 
-    ChatLogic->SetChatbotHandle(this);
+    _chatLogic->SetChatbotHandle(this);
 
     // dealocate everything else: (remember wxWidgets is NULL)
     content._chatLogic = nullptr;
     content._rootNode = nullptr;
     content._currentNode = nullptr;
-    current._image = NULL;
+    content._image = NULL;
 
     return *this;
 }
