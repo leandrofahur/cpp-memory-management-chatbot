@@ -50,6 +50,7 @@ ChatBot::ChatBot(const ChatBot& input) {
     this->_rootNode = input._rootNode;
     this->_currentNode = input._currentNode;
     this->_image = new wxBitmap(*input._image);
+    this->_chatLogic->SetChatbotHandle(this);
 }
 
 ChatBot::ChatBot(ChatBot&& input) {
@@ -58,12 +59,12 @@ ChatBot::ChatBot(ChatBot&& input) {
     this->_rootNode = input._rootNode;
     this->_currentNode = input._currentNode;
     this->_image = input._image;
+    this->_chatLogic->SetChatbotHandle(this);
     // clear:
     input._chatLogic = nullptr;
     input._rootNode = nullptr;
     input._currentNode = nullptr;
     input._image = NULL;
-
 }
 
 ChatBot& ChatBot::operator=(const ChatBot& input) {
@@ -80,6 +81,7 @@ ChatBot& ChatBot::operator=(const ChatBot& input) {
     this->_rootNode = input._rootNode;
     this->_currentNode = input._currentNode;
     this->_image = new wxBitmap(*input._image);
+    this->_chatLogic->SetChatbotHandle(this);
     return *this;
 }
 
@@ -97,6 +99,7 @@ ChatBot& ChatBot::operator=(ChatBot&& input) {
     this->_rootNode = input._rootNode;
     this->_currentNode = input._currentNode;
     this->_image = input._image;
+    this->_chatLogic->SetChatbotHandle(this);
     // clear:
     input._chatLogic = nullptr;
     input._rootNode = nullptr;
