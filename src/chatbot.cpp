@@ -21,7 +21,7 @@ ChatBot::ChatBot()
 ChatBot::ChatBot(std::string filename)
 {
     std::cout << "ChatBot Constructor" << std::endl;
-    
+
     // invalidate data handles
     _chatLogic = nullptr;
     _rootNode = nullptr;
@@ -35,7 +35,7 @@ ChatBot::~ChatBot()
     std::cout << "ChatBot Destructor" << std::endl;
 
     // deallocate heap memory
-    if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
+    if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
     {
         delete _image;
         _image = NULL;
@@ -44,7 +44,8 @@ ChatBot::~ChatBot()
 
 //// STUDENT CODE
 ////
-ChatBot::ChatBot(const ChatBot& input) {
+ChatBot::ChatBot(const ChatBot &input)
+{
     std::cout << "ChatBot Copy Constructor" << std::endl;
     this->_chatLogic = input._chatLogic;
     this->_rootNode = input._rootNode;
@@ -53,7 +54,8 @@ ChatBot::ChatBot(const ChatBot& input) {
     this->_chatLogic->SetChatbotHandle(this);
 }
 
-ChatBot::ChatBot(ChatBot&& input) {
+ChatBot::ChatBot(ChatBot &&input)
+{
     std::cout << "ChatBot Move Constructor" << std::endl;
     this->_chatLogic = input._chatLogic;
     this->_rootNode = input._rootNode;
@@ -64,18 +66,20 @@ ChatBot::ChatBot(ChatBot&& input) {
     input._chatLogic = nullptr;
     input._rootNode = nullptr;
     input._currentNode = nullptr;
-    input._image = NULL;
+    input._image = nullptr;
 }
 
-ChatBot& ChatBot::operator=(const ChatBot& input) {
-    if( this == &input) {
+ChatBot &ChatBot::operator=(const ChatBot &input)
+{
+    if (this == &input)
+    {
         return *this;
     }
 
-    if(this->_image == NULL) {
-        delete this->_image;
-        this->_image = NULL;
-    }
+    // if(this->_image == NULL) {
+    //     delete this->_image;
+    //     this->_image = NULL;
+    // }
 
     this->_chatLogic = input._chatLogic;
     this->_rootNode = input._rootNode;
@@ -85,14 +89,15 @@ ChatBot& ChatBot::operator=(const ChatBot& input) {
     return *this;
 }
 
-ChatBot& ChatBot::operator=(ChatBot&& input) {
-    if( this == &input) {
+ChatBot &ChatBot::operator=(ChatBot &&input)
+{
+    if (this == &input)
+    {
         return *this;
     }
 
-    if(this->_image == NULL) {
+    if(this->_image != nullptr) {
         delete this->_image;
-        this->_image = NULL;
     }
 
     this->_chatLogic = input._chatLogic;
