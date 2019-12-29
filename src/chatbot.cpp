@@ -71,6 +71,7 @@ ChatBot::ChatBot(ChatBot &&input)
 
 ChatBot &ChatBot::operator=(const ChatBot &input)
 {
+    std::cout << "ChatBot Copy Assignment operator" << std::endl;
     if (this == &input)
     {
         return *this;
@@ -91,6 +92,8 @@ ChatBot &ChatBot::operator=(const ChatBot &input)
 
 ChatBot &ChatBot::operator=(ChatBot &&input)
 {
+    std::cout << "ChatBot Move Assignment operator" << std::endl;
+
     if (this == &input)
     {
         return *this;

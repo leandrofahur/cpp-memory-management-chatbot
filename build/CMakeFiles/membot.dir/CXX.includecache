@@ -6,6 +6,24 @@
 
 #IncludeRegexTransform: 
 
+/home/workspace/cpp-memory-management-chatbot/src/chatbot.cpp
+iostream
+-
+random
+-
+algorithm
+-
+ctime
+-
+chatlogic.h
+/home/workspace/cpp-memory-management-chatbot/src/chatlogic.h
+graphnode.h
+/home/workspace/cpp-memory-management-chatbot/src/graphnode.h
+graphedge.h
+/home/workspace/cpp-memory-management-chatbot/src/graphedge.h
+chatbot.h
+/home/workspace/cpp-memory-management-chatbot/src/chatbot.h
+
 /home/workspace/cpp-memory-management-chatbot/src/chatbot.h
 wx/bitmap.h
 -
@@ -17,30 +35,6 @@ memory
 -
 wx/wx.h
 -
-
-/home/workspace/cpp-memory-management-chatbot/src/chatlogic.cpp
-fstream
--
-sstream
--
-iostream
--
-vector
--
-iterator
--
-tuple
--
-algorithm
--
-graphedge.h
-/home/workspace/cpp-memory-management-chatbot/src/graphedge.h
-graphnode.h
-/home/workspace/cpp-memory-management-chatbot/src/graphnode.h
-chatbot.h
-/home/workspace/cpp-memory-management-chatbot/src/chatbot.h
-chatlogic.h
-/home/workspace/cpp-memory-management-chatbot/src/chatlogic.h
 
 /home/workspace/cpp-memory-management-chatbot/src/chatlogic.h
 memory
